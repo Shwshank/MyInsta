@@ -14,15 +14,14 @@ const User = new Schema({
     type: String,
     required: true,
   },
-  id:{
-    type: String,
-    required: true,
-    unique: true
-  },
   date:{
     type: Date,
     required: true,
     default: Date.now
+  },
+  favImageId : {
+    type : Array ,
+    "default" : []
   }
 });
 

@@ -1,29 +1,28 @@
-var userService = require('../services/userServices')
 const uuid = require('uuid/v4');
 const bcrypt = require('bcryptjs');
+var userService = require('../services/userServices')
+var imageService = require('../services/imageServices')
 
 var controller = {
 
   login(req,response) {
-    console.log(req.body);
 
     userService.checkForExistingUser(req.body.email).then(res=>{
       if(res) {
 
         let result = bcrypt.compareSync(req.body.password, res.password);
 
-        response.status(200).send({msg:{
+        response.status(200).send({
           result: result,
           name: res.name,
           email: res.email,
+          _id: res._id,
           token: userService.generateJWT(res.email)
-        }});
+        });
 
       } else {
-        response.send({msg:
-          {
-            success: false
-          }
+        response.send({
+          success: false
         });
       }
     })
@@ -93,6 +92,45 @@ var controller = {
         });
       }
     })
+  },
+
+  userfavImages(req,response) {
+    var token = req.headers.authorization;
+    var email = userService.decodeJWT(token)
+
+    userService.checkForExistingUser(email).then(res1=>{
+      if(res1.favImageId.length) {
+        tempArr = []
+        test1(res1, someFun)
+
+        function test1(res, callback) {
+          if(res.favImageId.length) {
+            let temp = res.favImageId
+            for(let i=0; i< temp.length; i++) {
+              imageService.getAnImage(temp[i]).then(res11=>{
+                callback(res11)
+              })
+            }
+          }
+        }
+
+        function someFun(data) {
+          tempArr.push(data)
+          if(res1.favImageId.length === tempArr.length)
+          {
+            response.send({
+              img: tempArr
+            });
+          }
+        }
+
+      } else{
+        response.send({
+          img: []
+        });
+      }
+
+    } )
   }
 
 }
