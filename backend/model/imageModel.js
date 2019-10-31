@@ -2,6 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const Image = new Schema({
+  name:{
+    type: String,
+  },
   url:{
     type: String,
     required: true,

@@ -11,7 +11,6 @@ class Login extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props.user);
     if(this.props.user.success)
     history.push('/dashboard')
   }

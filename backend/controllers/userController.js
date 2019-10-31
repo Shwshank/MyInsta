@@ -37,19 +37,24 @@ var controller = {
       user = res
 
       if(user) {
-        response.status(200).send({msg:
-          {
-            success: true
-          }
+        response.status(200).send({
+          success: true,
+          msg: "user exists"
         });
       } else {
         let result = userService.registerUser(req.body, uuid, bcrypt)
         result.then(res=>{
           console.log("res "+res);
-          response.status(200).send({msg:res});
+          response.status(200).send({
+            success: true,
+            msg:"User Registered"
+          });
         },err=>{
           console.log("err "+err);
-          response.send({msg:err});
+          response.send({
+            success: false,
+            msg:err
+          });
         })
       }
     })
@@ -67,10 +72,8 @@ var controller = {
           email: res.email
         }});
       } else {
-        response.send({msg:
-          {
-            success: false
-          }
+        response.send({
+          success: false
         });
       }
     })
@@ -119,14 +122,16 @@ var controller = {
           if(res1.favImageId.length === tempArr.length)
           {
             response.send({
-              img: tempArr
+              success: true,
+              imgArray: tempArr
             });
           }
         }
 
       } else{
         response.send({
-          img: []
+          success: true,
+          imgArray: []
         });
       }
 

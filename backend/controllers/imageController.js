@@ -8,7 +8,8 @@ var imageController = {
       console.log(res);
       if(res) {
         response.status(200).send({
-          msg:res
+          success: true,
+          imgArray:res
         })
       } else {
         response.send({
@@ -23,7 +24,10 @@ var imageController = {
     let result = imageService.postImage(req.body)
     result.then(res=>{
       console.log(res);
-      response.status(200).send({msg:res});
+      response.status(200).send({
+        success: true,
+        msg:res
+      });
       },err=>{
         console.log("err "+err);
         response.send({msg:err});
@@ -35,7 +39,10 @@ var imageController = {
     let result = imageService.favImageIdUserId(req.body)
     result.then(res=>{
       console.log(res);
-      response.status(200).send({msg:res});
+      response.status(200).send({
+        success: true,
+        msg:res
+      });
       },err=>{
         console.log("err "+err);
         response.send({msg:err});
@@ -47,7 +54,10 @@ var imageController = {
     let result = imageService.unfavImageIdUserId(req.body)
     result.then(res=>{
       console.log(res);
-      response.status(200).send({msg:res});
+      response.status(200).send({
+        success: true,
+        msg:res
+      });
       },err=>{
         console.log("err "+err);
         response.send({msg:err});

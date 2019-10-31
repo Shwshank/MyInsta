@@ -10,21 +10,16 @@ class Dashboard extends React.Component {
 
   render() {
     return(
+      
       <div>
-
-        <div className="main-container">
-          <div  className="right-content">
-            <Switch>
-              <Route exact path="/dashboard/" component={Page1} />
-              <Route path="/dashboard/page1" component={Page1} />
-              <Route path="/dashboard/fav" component={Fav} />
-              <Route path="/dashboard/profile" component={Profile} />
-              <Route path='/404' component={Page1} />
-              <Redirect from='*' to='/404' />
-            </Switch>
-          </div>
-        </div>
-
+        <Switch>
+          <Route exact path="/dashboard/" component={Page1} />
+          <Route path="/dashboard/page1" component={Page1} />
+          <Route path="/dashboard/fav" component={Fav} />
+          <Route path="/dashboard/profile" component={Profile} />
+          <Route path='/404' component={Page1} />
+          <Redirect from='*' to='/404' />
+        </Switch>
       </div>
     )
   }

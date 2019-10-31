@@ -26,7 +26,8 @@ Image = {
     try{
 
       await new image({
-        url: data.url
+        url: data.url,
+        name: data.name
       }).save().then(res=>{
         resp = res
       }), err=>{

@@ -1,18 +1,42 @@
 import baseURL from './baseURL';
 
 let header = {
-    headers: {'Authorization': localStorage.getItem('token')}
+    headers: {'Authorization': ""}
 };
 
 export const login = async (email, password) =>{
 
-  console.log(email, password);
   let data = {
     "email": email,
     "password": password
   }
 
   const response = await baseURL.post('/login', data);
+
+  if(response.data.success) {
+
+    localStorage.setItem("token",response.data.token)
+    return response.data
+  } else {
+    return {success:false}
+  }
+}
+
+export const getAllImages = async () =>{
+
+  const response = await baseURL.get('/images');
+
+  if(response.data.success) {
+    return response.data
+  } else {
+    return {success:false}
+  }
+}
+
+export const getFavImages = async () =>{
+  header.headers.Authorization = localStorage.getItem("token")
+  console.log(header);
+  const response = await baseURL.get('/userfavImages', header);
 
   if(response.data.success) {
     return response.data
