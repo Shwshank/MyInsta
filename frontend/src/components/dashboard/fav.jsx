@@ -1,17 +1,17 @@
 import React from "react";
 import ImageCard from "../common/imageCard";
 
-class Page3 extends React.Component {
+class Fav extends React.Component {
 
   render() {
     return(
       <div>
 
-        page3
+        Fav
 
       </div>
     )
   }
 }
 
-export default Page3
+export default Fav

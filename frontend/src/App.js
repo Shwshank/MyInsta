@@ -7,6 +7,7 @@ import './style/style.scss';
 import Login from './components/login';
 import Dashboard from './components/dashboard';
 import Landing from './components/landing_page';
+import Header from './components/common/header';
 
 class App extends React.Component {
 
@@ -24,9 +25,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="main-container ">
 
-        <hr/>
+        <Header/>
 
 
         <Router history={history}>

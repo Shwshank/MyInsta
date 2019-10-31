@@ -13,7 +13,7 @@ var controller = {
         let result = bcrypt.compareSync(req.body.password, res.password);
 
         response.status(200).send({
-          result: result,
+          success: result,
           name: res.name,
           email: res.email,
           _id: res._id,

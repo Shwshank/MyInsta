@@ -6,25 +6,18 @@ let header = {
 
 export const login = async (email, password) =>{
 
+  console.log(email, password);
   let data = {
-    "email_id": email,
+    "email": email,
     "password": password
   }
 
-  const response = await baseURL.post('/login', data, header);
-  // console.log(response.data);
+  const response = await baseURL.post('/login', data);
 
   if(response.data.success) {
-
-    header = {
-        headers: {'Authorization': response.data.token+""}
-    };
-
-    localStorage.setItem("token", response.data.token+"")
-    localStorage.setItem("role", response.data.role+"")
-    return true
+    return response.data
   } else {
-    return false
+    return {success:false}
   }
 }
 

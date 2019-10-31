@@ -3,8 +3,8 @@ import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import { Router } from 'react-router';
 import history from '../../history';
 import Page1 from "./page1";
-import Page2 from "./page2";
-import Page3 from "./page3";
+import Fav from "./fav";
+import Profile from "./profile";
 
 class Dashboard extends React.Component {
 
@@ -17,9 +17,8 @@ class Dashboard extends React.Component {
             <Switch>
               <Route exact path="/dashboard/" component={Page1} />
               <Route path="/dashboard/page1" component={Page1} />
-              <Route path="/dashboard/page2" component={Page2} />
-              <Route path="/dashboard/page3" component={Page3} />
-              <Route path="/dashboard/dashboard" component={Dashboard} />
+              <Route path="/dashboard/fav" component={Fav} />
+              <Route path="/dashboard/profile" component={Profile} />
               <Route path='/404' component={Page1} />
               <Redirect from='*' to='/404' />
             </Switch>

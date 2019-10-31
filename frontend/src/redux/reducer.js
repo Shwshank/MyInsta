@@ -7,6 +7,26 @@ let allUserArray=[
   { name:"Sha3", desc:"Desc3", time:"", id:"125" }
 ]
 
+const userLogin = (state={}, action) =>{
+
+  switch(action.type) {
+
+    case 'LOGIN' : {
+      state = action.payload
+      return state
+    }
+
+    case 'LOGOUT' : {
+      state = {success:false}
+      return state
+    }
+
+    default: {
+      return state
+    }
+  }
+}
+
 const getAllUsers = (state=[], action) => {
 
   switch(action.type) {
@@ -68,7 +88,9 @@ const getUser = (state={}, action) =>{
   }
 }
 
+
 export default combineReducers({
   getAllUsersReducer: getAllUsers,
-  getUserReducer: getUser
+  getUserReducer: getUser,
+  loginReducer: userLogin
 })

@@ -1,3 +1,23 @@
+import { login } from "../services/APIendPoint";
+
+export const loginAction = (email="", password="") => async dispatch =>{
+
+  login(email, password).then(res=>{
+    if(res) {
+      console.log(res);
+      dispatch({
+        type: 'LOGIN',
+        payload: res
+      })
+    }
+  })
+}
+
+export const logoutAction = () => {
+  return({
+    type:'LOGOUT'
+  })
+}
 
 export const getAllUsers = () => {
   return({

@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux';
 import history from '../../history';
+import { loginAction } from '../../redux/action';
 
 class Login extends React.Component {
 
@@ -8,12 +10,14 @@ class Login extends React.Component {
     this.state = { email: "", password: "" };
   }
 
+  componentDidUpdate() {
+    console.log(this.props.user);
+    if(this.props.user.success)
+    history.push('/dashboard')
+  }
+
   loginButton = () =>{
-    console.log(this.state.email);
-    console.log(this.state.password);
-    if(this.state.email==="test" && this.state.password==="test") {
-      history.push('/dashboard')
-    }
+    this.props.loginAction(this.state.email, this.state.password)
   }
 
   emailChanged = async event => {
@@ -59,4 +63,13 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+const mapStateToProps = state => {
+  return {
+    user: state.loginReducer
+   };
+};
+
+export default connect(
+  mapStateToProps,
+  {loginAction}
+)(Login);

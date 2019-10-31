@@ -1,17 +1,17 @@
 import React from "react";
 import ImageCard from "../common/imageCard";
 
-class Page2 extends React.Component {
+class Profile extends React.Component {
 
   render() {
     return(
       <div>
 
-        page2
+        Profile
 
       </div>
     )
   }
 }
 
-export default Page2
+export default Profile
