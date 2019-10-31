@@ -10,11 +10,15 @@ class Page1 extends React.Component {
     this.props.getAllImagesAction()
   }
 
+  componentWillMount() {
+    this.props.getAllImagesAction()
+  }
+
   renderImageCard=(array=[])=>{
     if(array.length) {
       return array.map(image=>{
         return (
-          <ImageCard meta= {image} />
+          <ImageCard meta= {image} unfav={false} fav={true}/>
         )
       })
     }
@@ -23,10 +27,10 @@ class Page1 extends React.Component {
   render() {
 
     return(
-      <div>
-
-        {this.renderImageCard(this.props.images)}
-
+      <div caseName="container-fluid">
+        <div className="row">
+          {this.renderImageCard(this.props.images)}
+        </div>
       </div>
     )
   }

@@ -10,8 +10,8 @@ class Dashboard extends React.Component {
 
   render() {
     return(
-      
-      <div>
+
+      <React.Fragment>
         <Switch>
           <Route exact path="/dashboard/" component={Page1} />
           <Route path="/dashboard/page1" component={Page1} />
@@ -20,7 +20,7 @@ class Dashboard extends React.Component {
           <Route path='/404' component={Page1} />
           <Redirect from='*' to='/404' />
         </Switch>
-      </div>
+      </React.Fragment>
     )
   }
 }

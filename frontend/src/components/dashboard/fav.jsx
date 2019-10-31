@@ -19,7 +19,7 @@ class Fav extends React.Component {
     if(array.length) {
       return array.map(image=>{
         return (
-          <ImageCard meta= {image} />
+          <ImageCard meta= {image}  unfav={true} fav={false}/>
         )
       })
     }
@@ -27,10 +27,10 @@ class Fav extends React.Component {
 
   render() {
     return(
-      <div>
-
-        {this.renderImageCard(this.props.images)}
-
+      <div caseName="container-fluid">
+        <div className="row">
+          {this.renderImageCard(this.props.images)}
+        </div>
       </div>
     )
   }

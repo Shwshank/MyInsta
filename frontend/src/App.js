@@ -28,8 +28,7 @@ class App extends React.Component {
       <div className="main-container ">
 
         <Header/>
-
-
+        
         <Router history={history}>
           {/*
           <header className="App-header">
@@ -65,7 +64,6 @@ class App extends React.Component {
           <Redirect from='*' to='/404' />
           </Switch>
         </Router>
-
 
       </div>
     );

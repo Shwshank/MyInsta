@@ -1,8 +1,11 @@
 import {
   login,
   getAllImages,
-  getFavImages
+  getFavImages,
+  favImage,
+  unfavImage
 } from "../services/APIendPoint";
+import _ from 'lodash';
 
 export const loginAction = (email="", password="") => async dispatch =>{
 
@@ -41,13 +44,45 @@ export const getAllImagesAction = (email="", password="") => async dispatch =>{
 
 export const getFavImagesAction = () => async dispatch =>{
 
-
   getFavImages().then(res=>{
-    
+
     if(res.success) {
       dispatch({
         type: 'GET_FAV_IMAGES',
         payload: res.imgArray
+      })
+    } else {
+      alert("Unable to resolve!")
+    }
+  })
+}
+
+export const favImageAction = (image, user_id) => async dispatch =>{
+
+  favImage(image._id, user_id).then(res=>{
+    image.favUserId.push(user_id)
+    if(res.success) {
+      dispatch({
+        type: 'FAV_IMAGE',
+        payload: image
+      })
+    } else {
+      alert("Unable to resolve!")
+    }
+  })
+}
+
+export const unfavImageAction = (image, user_id) => async dispatch =>{
+
+  unfavImage(image._id, user_id).then(res=>{
+
+    let index = image.favUserId.indexOf( user_id)
+    image.favUserId.splice(index, 1)
+    console.log(image);
+    if(res.success) {
+      dispatch({
+        type: 'UNFAV_IMAGE',
+        payload: image
       })
     } else {
       alert("Unable to resolve!")
