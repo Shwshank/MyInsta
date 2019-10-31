@@ -7,10 +7,11 @@ class Landing extends React.Component {
 
   constructor(props) {
     super(props);
-    this.props.getAllImagesAction()
   }
 
-  componentDidUpdate() {}
+  componentDidMount() {
+    this.props.getAllImagesAction()
+  }
 
   renderImageCard=(array=[])=>{
     if(array.length) {

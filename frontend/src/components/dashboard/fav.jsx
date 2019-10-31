@@ -7,12 +7,10 @@ class Fav extends React.Component {
 
   constructor(props) {
     super(props);
-    this.props.getFavImagesAction()
-    console.log(this.props.images);
   }
 
-  componentDidUpdate() {
-    console.log(this.props.images);
+  componentDidMount() {
+    this.props.getFavImagesAction()
   }
 
   renderImageCard=(array=[])=>{

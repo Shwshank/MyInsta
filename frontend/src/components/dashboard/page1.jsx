@@ -7,10 +7,10 @@ class Page1 extends React.Component {
 
   constructor(props) {
     super(props);
-    this.props.getAllImagesAction()
+    
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getAllImagesAction()
   }
 
